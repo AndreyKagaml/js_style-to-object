@@ -6,13 +6,13 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const styles = sourceString
+  const stylesArray = sourceString
     .split(';')
-    .map((i) => i.trim())
-    .filter((i) => i)
-    .map((i) => i.split(':').map((s) => s.trim()));
+    .map((item) => item.trim())
+    .filter((item) => item)
+    .map((item) => item.split(':').map((styleEntry) => styleEntry.trim()));
 
-  return styles.reduce((obj, p) => ({ ...obj, [p[0]]: p[1] }), {});
+  return stylesArray.reduce((stylesObject, styleEntry) => ({ ...stylesObject, [styleEntry[0]]: styleEntry[1] }), {});
 }
 
 module.exports = convertToObject;
